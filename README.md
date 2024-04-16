@@ -5,6 +5,49 @@ This repository can load a fully running version of emscripten using the browser
 
 
 
+1. First login to Github
+2. Load ```Gitpod.io/#``` with this repository  using this link    https://gitpod.io/#github.com/hpssjellis/gitpod-wasm-emscripten-binaryen
+3. Watch the magic as Gitpod.io loads the entire emscripten framework and loads a Hello World example and puts you in the ```myExample``` folder
+4. Happy coding!
+
+When you have made a .c file called myFile.c run it using this command
+
+```
+
+emcc myFile.c -o myFile.html
+
+```
+
+
+A C++ file would be ran this way
+
+```
+em++ myFile.cpp -o myFile.html
+
+```
+
+
+
+
+
+.
+
+
+
+
+.
+
+
+
+
+
+.
+
+
+
+
+
+.
 
 
 
@@ -18,14 +61,7 @@ This repository can load a fully running version of emscripten using the browser
 
 
 
-
-
-
-
-
-
-
-
+## Just my notes here for when I made this repository
 
 
 https://emscripten.org/docs/getting_started/downloads.html
