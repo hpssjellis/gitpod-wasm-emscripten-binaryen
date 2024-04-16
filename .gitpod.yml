@@ -9,5 +9,11 @@ tasks:
           ./emsdk activate latest                                                  &&
           source ./emsdk_env.sh                                                    &&
           echo $PATH                                                               &&
-          ./emsdk help                                                             
+          echo "Emscripten Help Files"                                             &&
+          echo ""                                                                  &&
+          ./emsdk help                                                             &&
+          echo "em++ Help Files"                                                   &&
+          em++ --help                                                              &&
+          echo "emcc help files"                                                   &&
+          emcc --help                                           
     
