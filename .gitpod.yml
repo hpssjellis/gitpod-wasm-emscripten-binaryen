@@ -15,7 +15,7 @@ tasks:
           mkdir myExample                                                                                         &&
           cd myExample                                                                                            &&
           echo -e "#include <stdio.h>\n\nint main() {\n   printf(\"Hello World\");\n  return 0;\n}" > mytest.c    && 
-          emcc mytest.c -o mytext.html                                                                            && 
+          emcc mytest.c -o mytest.html                                                                            && 
           echo ""                                                                                                 &&
           echo "Here is your system path"                                                                         && 
           echo $PATH                                                                                              &&
