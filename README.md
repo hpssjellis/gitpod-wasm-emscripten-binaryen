@@ -108,6 +108,7 @@ might try
 
           export PATH="/Directory1:$PATH"
 
+/workspace/wasm-emscripten-binaryen/emsdk
 ```
 
 
