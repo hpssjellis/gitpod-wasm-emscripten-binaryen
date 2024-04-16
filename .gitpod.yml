@@ -1,0 +1,13 @@
+image:
+  file: .gitpod.Dockerfile
+  
+  
+tasks:
+  - init: pyenv versions                                                           &&
+          pip3 install --upgrade pip                                               &&
+          git clone https://github.com/emscripten-core/emsdk.gitn                  &&
+          cd emsdk                                                                 &&
+          ./emsdk install latest                                                   &&
+          ./emsdk activate latest                                                  &&
+          source ./emsdk_env.sh                                                    &&
+    
