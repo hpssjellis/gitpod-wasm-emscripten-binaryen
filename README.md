@@ -43,7 +43,7 @@ sudo apt-get install cmake
 ```
 
 # Fetch the latest registry of available tools.
-./emsdk update
+./emsdk update  or  git pull
 
 # Download and install the latest SDK tools.
 ./emsdk install latest
