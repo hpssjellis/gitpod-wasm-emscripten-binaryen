@@ -25,5 +25,6 @@ tasks:
           em++ --help                                                                                             &&
           echo ""                                                                                                 &&
           echo "emcc help files"                                                                                  &&
-          emcc --help                                           
+          emcc --help                                                                                             &&   
+          ls
     
