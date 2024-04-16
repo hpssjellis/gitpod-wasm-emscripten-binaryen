@@ -117,8 +117,13 @@ This works
 
 ```
 
-echo -e "#include <stdio.h>\n\nint main() {\n   print(\"Hello World\");\n  return 0;\n}" > myStuff.c
+echo -e "#include <stdio.h>\n\nint main() {\n   printf(\"Hello World\");\n  return 0;\n}" > myStuff.c
 
 ```
 
+and this runs it
 
+```
+emcc mytest.c -o mytext.html
+
+```
