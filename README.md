@@ -89,6 +89,12 @@ int main() {
 ```
 
 
+NOTE: better to set the path.
+
+
+```
+./upstream/emscripten/emcc -v
+```
 
 
 
