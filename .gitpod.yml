@@ -10,7 +10,7 @@ tasks:
           source ./emsdk_env.sh                                                                                   &&
           mkdir myExample                                                                                         &&
           cd myExample                                                                                            &&
-          echo -e "#include <stdio.h>\n\nint main() {\n   printf(\"Hello World\");\n  return 0;\n}" > mytest.c     && 
+          echo -e "#include <stdio.h>\n\nint main() {\n   printf(\"Hello World\");\n  return 0;\n}" > mytest.c    && 
           emcc mytest.c -o mytext.html                                                                            &&  
           echo $PATH                                                                                              &&
           echo "Emscripten Help Files"                                                                            &&
