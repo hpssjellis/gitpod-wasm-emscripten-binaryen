@@ -8,16 +8,22 @@ tasks:
           ./emsdk install latest                                                                                  &&
           ./emsdk activate latest                                                                                 &&
           source ./emsdk_env.sh                                                                                   &&
-          mkdir myExample                                                                                         &&
-          cd myExample                                                                                            &&
-          echo -e "#include <stdio.h>\n\nint main() {\n   printf(\"Hello World\");\n  return 0;\n}" > mytest.c    && 
-          emcc mytest.c -o mytext.html                                                                            &&  
-          echo $PATH                                                                                              &&
+          echo ""                                                                                                 &&
           echo "Emscripten Help Files"                                                                            &&
           echo ""                                                                                                 &&
           ./emsdk help                                                                                            &&
+          mkdir myExample                                                                                         &&
+          cd myExample                                                                                            &&
+          echo -e "#include <stdio.h>\n\nint main() {\n   printf(\"Hello World\");\n  return 0;\n}" > mytest.c    && 
+          emcc mytest.c -o mytext.html                                                                            && 
+          echo ""                                                                                                 &&
+          echo "Here is your system path"                                                                         && 
+          echo $PATH                                                                                              &&
+          echo ""                                                                                                 &&
           echo "em++ Help Files"                                                                                  &&
+          echo ""                                                                                                 &&
           em++ --help                                                                                             &&
+          echo ""                                                                                                 &&
           echo "emcc help files"                                                                                  &&
           emcc --help                                           
     
