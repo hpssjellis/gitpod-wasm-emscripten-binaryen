@@ -7,5 +7,6 @@ tasks:
           cd emsdk                                                                 &&
           ./emsdk install latest                                                   &&
           ./emsdk activate latest                                                  &&
-          source ./emsdk_env.sh                                                    
+          source ./emsdk_env.sh                                                    &&
+          ./emsdk help                                                             
     
