@@ -1,0 +1,19 @@
+image:
+  file: .gitpod.Dockerfile
+  
+  
+tasks:
+  - init: git clone https://github.com/emscripten-core/emsdk.git                   &&
+          cd emsdk                                                                 &&
+          ./emsdk install latest                                                   &&
+          ./emsdk activate latest                                                  &&
+          source ./emsdk_env.sh                                                    &&
+          echo $PATH                                                               &&
+          echo "Emscripten Help Files"                                             &&
+          echo ""                                                                  &&
+          ./emsdk help                                                             &&
+          echo "em++ Help Files"                                                   &&
+          em++ --help                                                              &&
+          echo "emcc help files"                                                   &&
+          emcc --help                                           
+    
