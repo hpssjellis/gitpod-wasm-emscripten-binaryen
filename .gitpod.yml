@@ -8,7 +8,6 @@ tasks:
           ./emsdk install latest                                                   &&
           ./emsdk activate latest                                                  &&
           source ./emsdk_env.sh                                                    &&
-          ln -s ./upstream/emscripten/emcc myemcc                                  &&
-          ln -s ./upstream/emscripten/em++ myem++                                  &&
+          ln -s ./upstream/emscripten/ myemsdk                                     &&
           ./emsdk help                                                             
     
