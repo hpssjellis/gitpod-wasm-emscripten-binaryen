@@ -1,4 +1,4 @@
-# wasm-emscripten-binaryen
+o World# wasm-emscripten-binaryen
 
 
 
@@ -109,6 +109,16 @@ might try
           export PATH="/Directory1:$PATH"
 
 /workspace/wasm-emscripten-binaryen/emsdk
+```
+
+
+
+This works
+
+```
+
+echo -e "#include <stdio.h>\n\nint main() {\n   print(\"Hello World\");\n  return 0;\n}" > myStuff.c
+
 ```
 
 
