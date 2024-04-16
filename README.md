@@ -1,4 +1,4 @@
-o World# wasm-emscripten-binaryen
+# wasm-emscripten-binaryen
 
 
 
