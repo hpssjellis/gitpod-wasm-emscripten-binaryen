@@ -55,3 +55,40 @@ sudo apt-get install cmake
 source ./emsdk_env.sh
 ```
 
+
+
+https://emscripten.org/docs/getting_started/Tutorial.html
+
+
+
+```
+#include <stdio.h>
+
+int main() {
+  printf("hello, world!\n");
+  return 0;
+}
+
+```
+
+
+```
+
+./emcc test/hello_world.c
+
+
+```
+
+
+```
+
+
+./emcc test/hello_world.c -o hello.html
+
+
+```
+
+
+
+
+
