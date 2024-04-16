@@ -94,7 +94,15 @@ NOTE: better to set the path.
 
 ```
 ./upstream/emscripten/emcc -v
-```
 
+
+tried
+
+          ln -s ./upstream/emscripten/emcc myemcc                                  &&
+          ln -s ./upstream/emscripten/em++ myem++                                  &&
+
+no success
+
+```
 
 
