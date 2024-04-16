@@ -3,17 +3,21 @@ image:
   
   
 tasks:
-  - init: git clone https://github.com/emscripten-core/emsdk.git                   &&
-          cd emsdk                                                                 &&
-          ./emsdk install latest                                                   &&
-          ./emsdk activate latest                                                  &&
-          source ./emsdk_env.sh                                                    &&
-          echo $PATH                                                               &&
-          echo "Emscripten Help Files"                                             &&
-          echo ""                                                                  &&
-          ./emsdk help                                                             &&
-          echo "em++ Help Files"                                                   &&
-          em++ --help                                                              &&
-          echo "emcc help files"                                                   &&
+  - init: git clone https://github.com/emscripten-core/emsdk.git                                                  &&
+          cd emsdk                                                                                                &&
+          ./emsdk install latest                                                                                  &&
+          ./emsdk activate latest                                                                                 &&
+          source ./emsdk_env.sh                                                                                   &&
+          mkdir myExample                                                                                         &&
+          cd myExample                                                                                            &&
+          echo -e "#include <stdio.h>\n\nint main() {\n   print(\"Hello World\");\n  return 0;\n}" > mytest.c     && 
+          emcc mytest.c -o mytext.html                                                                            &&  
+          echo $PATH                                                                                              &&
+          echo "Emscripten Help Files"                                                                            &&
+          echo ""                                                                                                 &&
+          ./emsdk help                                                                                            &&
+          echo "em++ Help Files"                                                                                  &&
+          em++ --help                                                                                             &&
+          echo "emcc help files"                                                                                  &&
           emcc --help                                           
     
