@@ -103,6 +103,11 @@ tried
 
 no success
 
+
+might try
+
+          export PATH="/Directory1:$PATH"
+
 ```
 
 
