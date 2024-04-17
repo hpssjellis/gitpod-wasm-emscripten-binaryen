@@ -27,6 +27,10 @@ tasks:
           echo ""                                                                                                 &&
           echo "emcc help files"                                                                                  &&
           emcc --help                                                                                             &&   
+          cd ..                                                                                                   &&   
+          cd ..                                                                                                   &&   
+          cd public                                                                                               &&   
           ls                                                                                                      &&
+          echo "Work in this folder and compile the files"                                                        &&
           apachectl start
     
