@@ -32,7 +32,11 @@ em++ myFile.cpp -o myFile.html
 
 .
 
+try online although they seem slow or not even correct
 
+https://mbebenita.github.io/WasmExplorer/
+
+https://webassembly.studio/
 
 
 .
