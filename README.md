@@ -26,7 +26,7 @@ em++ myFile.cpp -o myFile.html
 
 ```
 
-
+## You must use the main terminal since other terminals do not have the PATH set.
 
 Note on a new terminal the path might be needed to be set with this command
 
