@@ -32,6 +32,20 @@ em++ myFile.cpp -o myFile.html
 
 .
 
+
+
+
+.
+
+
+Examples at   https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#a-quick-example
+
+
+.
+
+
+.
+
 try online although they seem slow or not even correct
 
 https://mbebenita.github.io/WasmExplorer/
