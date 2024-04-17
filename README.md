@@ -31,7 +31,7 @@ em++ myFile.cpp -o myFile.html
 Note on a new terminal the path might be needed to be set with this command
 
 ```
-export PATH="/workspace/wasm-emscripten-binaryen/emsdk/upstream/emscripten:$PATH"
+export PATH="/w/workspace/gitpod-wasm-emscripten-binaryen/emsdk:/workspace/gitpod-wasm-emscripten-binaryen/emsdk/upstream/emscripten:orkspace/wasm-emscripten-binaryen/emsdk/upstream/emscripten:$PATH"
 ```
 
 
