@@ -1,0 +1,32 @@
+image:
+  file: .gitpod.Dockerfile
+  
+  
+tasks:  
+  - before: printf 'export PATH="%s:$PATH"\n' "/workspace/wasm-emscripten-binaryen/emsdk/upstream/emscripten" >> $HOME/.bashrc && exit
+  - init: git clone https://github.com/emscripten-core/emsdk.git                                                  &&
+          cd emsdk                                                                                                &&
+          ./emsdk install latest                                                                                  &&
+          ./emsdk activate latest                                                                                 &&
+          source ./emsdk_env.sh                                                                                   &&
+          echo ""                                                                                                 &&
+          echo "Emscripten Help Files"                                                                            &&
+          echo ""                                                                                                 &&
+          ./emsdk help                                                                                            &&
+          mkdir myExample                                                                                         &&
+          cd myExample                                                                                            &&
+          echo -e "#include <stdio.h>\n\nint main() {\n   printf(\"Hello World\");\n  return 0;\n}" > mytest.c    && 
+          emcc mytest.c -o mytest.html                                                                            && 
+          echo ""                                                                                                 &&
+          echo "Here is your system path"                                                                         && 
+          echo $PATH                                                                                              &&
+          echo ""                                                                                                 &&
+          echo "em++ Help Files"                                                                                  &&
+          echo ""                                                                                                 &&
+          em++ --help                                                                                             &&
+          echo ""                                                                                                 &&
+          echo "emcc help files"                                                                                  &&
+          emcc --help                                                                                             &&   
+          ls                                                                                                      &&
+          apachectl start
+    
