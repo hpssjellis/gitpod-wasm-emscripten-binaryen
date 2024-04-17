@@ -26,5 +26,6 @@ tasks:
           echo ""                                                                                                 &&
           echo "emcc help files"                                                                                  &&
           emcc --help                                                                                             &&   
-          ls
+          ls                                                                                                      &&
+          apachectl start
     
