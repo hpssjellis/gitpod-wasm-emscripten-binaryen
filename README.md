@@ -28,7 +28,19 @@ em++ myFile.cpp -o myFile.html
 
 
 
+Note on a new terminal the path might be needed to be set with this command
 
+```
+export PATH="/workspace/wasm-emscripten-binaryen/emsdk/upstream/emscripten:$PATH"
+```
+
+
+Or edit the 
+
+```
+tasks:
+  - before: printf 'export PATH="%s:$PATH"\n' "/usr/games" >> $HOME/.bashrc && exit
+```
 
 .
 
