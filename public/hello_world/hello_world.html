@@ -8,15 +8,20 @@
 <body>
     <h1>WebAssembly Hello World Example</h1>
     <input type="button" value="Say Hello" onclick="sayHello()">
+    <div id="output">Waiting for interaction...</div> <!-- Updated placeholder text -->
 
     <script>
-      async function sayHello() {
-        await Module.ready; // Waits for the WebAssembly module to initialize
-        Module.ccall('hello',   // name of C function 
-                     null,      // return type
-                     [],        // argument types
-                     []);       // arguments
-      }
+        async function sayHello() {
+            if (Module.ready) {
+                const result = Module.ccall('hello',   // name of C function
+                            'string',                 // return type
+                            [],                       // argument types
+                            []);                      // arguments
+                document.getElementById('output').textContent = result;
+            } else {
+                console.error('Module is not yet initialized.');
+            }
+        }
     </script>
 </body>
 </html>
