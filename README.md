@@ -7,7 +7,7 @@ This repository can load a fully running version of emscripten using the browser
 
 1. First login to Github
 2. Load ```Gitpod.io/#``` with this repository  using this link    https://gitpod.io/#github.com/hpssjellis/gitpod-wasm-emscripten-binaryen
-3. Watch the magic as Gitpod.io loads the entire emscripten framework and loads a Hello World example and puts you in the ```myExample``` folder
+3. Watch the magic as Gitpod.io loads the entire emscripten framework and loads a Hello World example and then auto compiles all the examples in the ```public``` folder and then puts you into the puts you in the ```public``` folder
 4. If you don't get the option to open a browser, switch from the terminal to ports and click the world icon
 5. Happy coding!
 
