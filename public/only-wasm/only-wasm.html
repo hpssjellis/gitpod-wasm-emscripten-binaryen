@@ -1,3 +1,40 @@
+<script>
+  async function loadWasm(filename) {
+    let response = await fetch(filename);
+    let buffer = await response.arrayBuffer();
+    let module = await WebAssembly.compile(buffer);
+
+    // Create an imports object with the necessary structure.
+    let imports = {
+      env: {
+        // This should include all the expected imports by Emscripten, typically these can include:
+        // memory: new WebAssembly.Memory({ initial: 256, maximum: 256 }),
+        // table: new WebAssembly.Table({ initial: 0, maximum: 0, element: "anyfunc" }),
+        abort: console.log,
+        emscripten_resize_heap: () => {},
+        // Add other imports used by the module, for example, _emscripten_memcpy_big, etc.
+        // Check the WASM module's import requirements by inspecting it or in the browser's developer console.
+      }
+    };
+
+    // Ensure you pass the necessary imports when creating the WebAssembly instance.
+    return new WebAssembly.Instance(module, imports);
+  }
+
+  async function sayHello() {
+    const instance = await loadWasm('only-wasm.wasm');
+    instance.exports._hello();  // Calling the exported 'hello' function
+  }
+</script>
+
+
+
+
+
+
+/*
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,3 +60,6 @@
     </script>
 </body>
 </html>
+
+
+*/
