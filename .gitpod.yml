@@ -30,6 +30,8 @@ tasks:
           cd ..                                                                                                   &&   
           cd ..                                                                                                   &&   
           cd public                                                                                               &&   
+          chmod +x compile-all.sh                                                                                 && 
+          ./compile-all.sh
           ls                                                                                                      &&
           echo "Work in this folder and compile the files"                                                        &&
           apachectl start
