@@ -39,7 +39,7 @@ int countToN(int n) {
     int myTotal = 0;
     while (myCount < n) {
         myCount += 1;    // add count to the old count
-        myTotal += count;
+        myTotal += myCount;
         printf("%d ", myCount);
     }
     return myTotal;
