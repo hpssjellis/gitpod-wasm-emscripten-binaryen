@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World WebAssembly</title>
-    <script src="hello_world.js"></script>
-</head>
-<body>
-    <h1>WebAssembly Hello World Example</h1>
-    <input type="button" value="Say Hello" onclick="sayHello()">
-    <div id="output">Waiting for interaction...</div> <!-- Updated placeholder text -->
-
-    <script>
-        async function sayHello() {
-            if (Module.ready) {
-                const result = Module.ccall('hello',   // name of C function
-                            'string',                 // return type
-                            [],                       // argument types
-                            []);                      // arguments
-                document.getElementById('output').textContent = result;
-            } else {
-                console.error('Module is not yet initialized.');
-            }
-        }
-    </script>
-</body>
-</html>
+<script src="hello_world.js"></script>
+<script>
+    // When the module is ready, call the hello function
+    Module.onRuntimeInitialized = function() {
+        const helloMessage = Module.ccall('hello', 'string', [], []);
+        console.log(helloMessage); // Expected output: "Hello, World!"
+        document.getElementById('output').textContent = helloMessage; // Display in HTML
+    };
+</script>
+<div id="output"></div> <!-- Element to display the output -->
