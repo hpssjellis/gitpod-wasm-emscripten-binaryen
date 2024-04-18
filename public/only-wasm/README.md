@@ -1,7 +1,7 @@
 
 emcc only-wasm.c -s STANDALONE_WASM -s EXPORTED_FUNCTIONS='["_hello"]' -o only-wasm.wasm
 
-
+I strongly suggest you do not do this method.  The .js file created by Emscripten does a lot of the work for you which is difficult to do this way.
 
 
 # old attempts
