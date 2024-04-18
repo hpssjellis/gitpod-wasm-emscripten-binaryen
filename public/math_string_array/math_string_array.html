@@ -50,6 +50,8 @@
       }
 
 
+        /*
+
  async function sumArray() {
         await Module.ready;
         let numbers = document.getElementById('inputArray').value.split(',').map(Number);
@@ -65,6 +67,37 @@
         Module._free(arrayPtr); // Free the allocated memory
         document.getElementById('arrayResult').innerText = 'Sum: ' + result;
       }
+
+
+
+        */
+
+
+async function sumArray() {
+    await Module.ready;
+    let numbers = document.getElementById('inputArray').value.split(',').map(Number);
+    console.log("Parsed numbers:", numbers); // Debug the parsed array
+
+    // Allocate memory for the array in WebAssembly memory
+    const arrayPtr = Module._malloc(numbers.length * 4);
+    console.log("Memory allocated at:", arrayPtr); // Debug memory allocation
+
+    // Create a typed array view over the allocated memory to set the numbers correctly
+    let numArray = new Int32Array(Module.HEAP32.buffer, arrayPtr, numbers.length);
+    numArray.set(numbers);
+
+    // Call the sum_array function in WebAssembly passing the pointer and length
+    const result = Module.ccall('sum_array', 'number', ['number', 'number'], [arrayPtr, numbers.length]);
+    console.log("Computed sum:", result); // Debug the computation result
+
+    // Update the webpage with the result
+    document.getElementById('arrayResult').innerText = 'Sum: ' + result;
+
+    // Free the allocated memory
+    Module._free(arrayPtr);
+}
+
+        
         
     </script>
 </body>
