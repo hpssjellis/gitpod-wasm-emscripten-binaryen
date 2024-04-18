@@ -53,4 +53,11 @@ tasks:
 
 Examples at   https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#a-quick-example
 
+or
+
+
+https://emscripten.org/docs/porting/connecting_cpp_and_javascript/Interacting-with-code.html#
+
+
+
 
