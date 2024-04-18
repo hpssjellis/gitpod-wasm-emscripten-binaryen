@@ -1,0 +1,54 @@
+<script>
+  async function loadWasm(filename) {
+    try {
+      const response = await fetch(filename);
+      const buffer = await response.arrayBuffer();
+      const module = await WebAssembly.compile(buffer);
+      
+      const imports = {
+        env: {
+          abort: (msg, file, line, column) => {
+            console.error("Abort called at " + file + ":" + line + ":" + column, "Message:", msg);
+          },
+          emscripten_resize_heap: () => {
+            console.error("Heap resize requested but not supported.");
+            return false;
+          }
+        }
+      };
+
+      const instance = await WebAssembly.instantiate(module, imports);
+      if (!instance.exports.memory) {
+        console.error("WebAssembly module does not export memory!");
+      }
+      return instance;
+    } catch (error) {
+      console.error("Error loading WebAssembly module:", error);
+      throw error; // Re-throw to prevent further execution
+    }
+  }
+
+  async function sayHello() {
+    try {
+      const instance = await loadWasm('hello_world.wasm');
+      const ptr = instance.exports._hello();  // Pointer to the string in WebAssembly memory
+      const message = readStringFromMemory(instance, ptr);
+      document.getElementById('message').textContent = message;
+    } catch (error) {
+      console.error("Error during WebAssembly interaction:", error);
+    }
+  }
+
+  function readStringFromMemory(instance, ptr) {
+    if (!instance.exports.memory) {
+      console.error("Memory is not exported from the WebAssembly instance.");
+      return "[Error: Memory not accessible]";
+    }
+    const bytes = new Uint8Array(instance.exports.memory.buffer, ptr);
+    let str = '';
+    let i = 0;
+    while (bytes[i] !== 0) {
+      str += String.fromCharCode(bytes[i]);
+      i++;
+    }
+    return str
