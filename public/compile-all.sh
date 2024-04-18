@@ -16,7 +16,7 @@ emcc hello_world.c -o hello_world.js -s EXPORTED_FUNCTIONS='["_hello"]' -s EXPOR
 cd ..
 
 cd math_string_array
-emcc math_string_array.c -o math_string_array.js -s EXPORTED_FUNCTIONS='["_add", "_subtract", "_get_length", "_sum_array"]' -s EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "_malloc", "_free"]'
+emcc math_string_array.c -o math_string_array.js -s EXPORTED_FUNCTIONS='["_add", "_subtract", "_get_length", "_sum_array"]' -s EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "_malloc", "_free","_HEAP32"]'
 cd ..
 
 cd only-wasm
