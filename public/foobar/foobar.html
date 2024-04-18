@@ -12,30 +12,33 @@
     <input type="button" value="Call Bar" onclick="callBar()">
     <div id="output"></div>
 
-    <script>
-        // Function to run the main function of the WebAssembly module
-        async function runMain() {
-            if (Module.ready) {
-                const result = Module.ccall('main', 'string', [], []);
-                document.getElementById('output').innerHTML += 'Main: ' + result + '<br>';
-            }
-        }
+ <script>
+    // Ensure the module is ready before calling any functions
+    Module.onRuntimeInitialized = function() {
+        Module.ready = true;
+    };
 
-        // Function to call the 'foo' function
-        async function callFoo() {
-            if (Module.ready) {
-                const result = Module.ccall('foo', 'string', [], []);
-                document.getElementById('output').innerHTML += 'Foo: ' + result + '<br>';
-            }
+    async function runMain() {
+        if (Module.ready) {
+            const result = Module.ccall('main', 'number', [], []); // main returns an integer
+            document.getElementById('output').innerHTML += 'Main: ' + result + '<br>';
         }
+    }
 
-        // Function to call the 'bar' function
-        async function callBar() {
-            if (Module.ready) {
-                const result = Module.ccall('bar', 'string', [], []);
-                document.getElementById('output').innerHTML += 'Bar: ' + result + '<br>';
-            }
+    async function callFoo() {
+        if (Module.ready) {
+            const result = Module.ccall('foo', 'string', [], []); // foo returns a string
+            document.getElementById('output').innerHTML += 'Foo: ' + result + '<br>';
         }
-    </script>
+    }
+
+    async function callBar() {
+        if (Module.ready) {
+            const result = Module.ccall('bar', 'string', [], []); // bar returns a string
+            document.getElementById('output').innerHTML += 'Bar: ' + result + '<br>';
+        }
+    }
+</script>
+
 </body>
 </html>
