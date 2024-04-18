@@ -8,36 +8,44 @@
 <body>
     <h1>WebAssembly Hello World Example</h1>
     <input type="button" value="Say Hello" onclick="sayHello()">
+    <div id="message"></div> <!-- Container to display the message -->
 
-<script>
-  async function loadWasm(filename) {
-    let response = await fetch(filename);
-    let buffer = await response.arrayBuffer();
-    let module = await WebAssembly.compile(buffer);
+    <script>
+      async function loadWasm(filename) {
+        const response = await fetch(filename);
+        const buffer = await response.arrayBuffer();
+        const module = await WebAssembly.compile(buffer);
+        
+        const imports = {
+          env: {
+            abort: console.log,
+            emscripten_resize_heap: () => {}
+            // If your WebAssembly uses other environment variables, define them here.
+          }
+        };
 
-    // Create an imports object with the necessary structure.
-    let imports = {
-      env: {
-        // This should include all the expected imports by Emscripten, typically these can include:
-        // memory: new WebAssembly.Memory({ initial: 256, maximum: 256 }),
-        // table: new WebAssembly.Table({ initial: 0, maximum: 0, element: "anyfunc" }),
-        abort: console.log,
-        emscripten_resize_heap: () => {},
-        // Add other imports used by the module, for example, _emscripten_memcpy_big, etc.
-        // Check the WASM module's import requirements by inspecting it or in the browser's developer console.
+        const instance = await WebAssembly.instantiate(module, imports);
+        return instance;
       }
-    };
 
-    // Ensure you pass the necessary imports when creating the WebAssembly instance.
-    return new WebAssembly.Instance(module, imports);
-  }
+      async function sayHello() {
+        const instance = await loadWasm('hello_world.wasm');
+        const ptr = instance.exports._hello();  // Pointer to the string in WebAssembly memory
+        const message = readStringFromMemory(instance, ptr);
+        document.getElementById('message').textContent = message;
+      }
 
-  async function sayHello() {
-    const instance = await loadWasm('only-wasm.wasm');
-    instance.exports._hello();  // Calling the exported 'hello' function
-  }
-</script>
-
+      function readStringFromMemory(instance, ptr) {
+        const bytes = new Uint8Array(instance.exports.memory.buffer, ptr);
+        let str = '';
+        let i = 0;
+        while (bytes[i] !== 0) {
+          str += String.fromCharCode(bytes[i]);
+          i++;
+        }
+        return str;
+      }
+    </script>
 </body>
 </html>
 
